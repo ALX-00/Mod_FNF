@@ -87,6 +87,11 @@ class DialogueBox extends FlxSpriteGroup
 				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
+			case 'ho':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
+				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
+				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
 		}
 
 		this.dialogueList = dialogueList;
@@ -189,7 +194,7 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					isEnding = true;
 
-					if (PlayState.SONG.song.toLowerCase() == 'senpai' || PlayState.SONG.song.toLowerCase() == 'thorns')
+					if (PlayState.SONG.song.toLowerCase() == 'senpai' || PlayState.SONG.song.toLowerCase() == 'thorns' || PlayState.SONG.song.toLowerCase() == 'ho')
 						FlxG.sound.music.fadeOut(2.2, 0);
 
 					new FlxTimer().start(0.2, function(tmr:FlxTimer)
